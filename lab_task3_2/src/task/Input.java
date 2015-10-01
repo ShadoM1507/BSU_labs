@@ -4,36 +4,42 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
-    protected static double inputDouble() {
+    public Input() {
+    }
+
+    public double readDouble(Scanner scan) {
         double data;
-        Scanner scan = new Scanner(System.in);
 
         try {
             data = scan.nextDouble();
-            if(data <= 0)
+            if(data <= 0) {
                 throw new InputNotPositive("Вы ввели не положительное число! Попробуйте снова: ");
+            }
         } catch(InputMismatchException e) {
             System.out.print("Неверный ввод! Попробуйте снова: ");
-            data = inputDouble();
+            scan.next();
+            data = readDouble(scan);
         } catch (InputNotPositive e) {
             System.out.print(e.getMessage());
-            data = inputDouble();
+            data = readDouble(scan);
         }
 
         return data;
     }
 
-    protected static int inputInt() {
+    public int readInt(Scanner scan) {
         int data;
-        Scanner scan = new Scanner(System.in);
 
         try {
             data = scan.nextInt();
-            if(data < 2)
-                throw new InputMismatchException();
+            if(data < 2) {
+                System.out.print("Введённое вами число не соответсвует установленым границам. Попробуйте снова: ");
+                data = readInt(scan);
+            }
         } catch(InputMismatchException e) {
             System.out.print("Неверный ввод! Попробуйте снова: ");
-            data = inputInt();
+            scan.next();
+            data = readInt(scan);
         }
 
         return data;

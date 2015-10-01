@@ -4,16 +4,16 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Input {
-    protected static int inputInt() {
+    public int readInt(Scanner scan) {
         int data;
-        Scanner scan = new Scanner(System.in);
 
         try {
             data = scan.nextInt();
 
         } catch(InputMismatchException e) {
             System.out.print("Неверный ввод! Попробуйте снова: ");
-            data = inputInt();
+            scan.next();
+            data = readInt(scan);
         }
 
         return data;

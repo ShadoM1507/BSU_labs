@@ -1,15 +1,15 @@
 package util;
 
 public class Table {
-    static int n = 0;
+    private int n = 0;
 
-    public static void drawStart() {
+    public void startDrawing() {
         System.out.println("\n+------------+------------+");
         System.out.println("|    Сумма   |  Значение  |");
         System.out.println("+------------+------------+");
     }
 
-    public static void addToTable(double s) {
+    public void addToTable(double s) {
         n++;
 
         System.out.print("|");
